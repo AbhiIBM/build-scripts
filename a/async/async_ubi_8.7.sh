@@ -26,11 +26,11 @@ export RUBY_VERSION=${RUBY_VERSION:-3.1.1}
 HOME_DIR=$PWD
 
 #installing RUBY
-dnf install -qy http://mirror.nodesdirect.com/centos/8-stream/BaseOS/ppc64le/os/Packages/centos-gpg-keys-8-6.el8.noarch.rpm
-dnf install -qy http://mirror.nodesdirect.com/centos/8-stream/BaseOS/ppc64le/os/Packages/centos-stream-repos-8-6.el8.noarch.rpm
-dnf install -qy procps git
+sudo dnf install -qy http://mirror.nodesdirect.com/centos/8-stream/BaseOS/ppc64le/os/Packages/centos-gpg-keys-8-6.el8.noarch.rpm
+sudo dnf install -qy http://mirror.nodesdirect.com/centos/8-stream/BaseOS/ppc64le/os/Packages/centos-stream-repos-8-6.el8.noarch.rpm
+sudo dnf install -qy procps git
 curl https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer | bash
-source /etc/profile.d/rvm.sh
+source $HOME/.rvm/scripts/rvm
 rvm install $RUBY_VERSION
 gem install bundle
 
