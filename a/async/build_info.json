@@ -1,0 +1,11 @@
+{
+    "maintainer": "Abhishek.Dwivedi6@ibm.com",
+    "package_name": "async",
+    "github_url": "https://github.com/socketry/async.git",
+    "version": "v2.6.2",
+    "default_branch": "main",
+    "package_dir": "a/async",
+    "build_script": "async_ubi_8.7.sh",
+    "validate_build_script": true,
+    "docker_build": false
+  }
