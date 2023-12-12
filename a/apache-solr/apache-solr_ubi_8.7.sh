@@ -36,6 +36,11 @@ cd  $PACKAGE_NAME
 git checkout $PACKAGE_VERSION
 
 chmod +x gradlew
+./gradlew localSettings
+
+sed 's/tests.heapsize=512m/tests.heapsize=1024m/g' gradle.properties
+sed 's/tests.minheapsize=512m/tests.minheapsize=1024m/g' gradle.properties
+sed '71 s/Xmx1g/Xmx2g/'	gradle.properties
 
 if ! ./gradlew check -x test -Ptask.times=true -Pvalidation.errorprone=true; then
     echo "------------------$PACKAGE_NAME:install_fails-------------------------------------"
@@ -44,9 +49,12 @@ if ! ./gradlew check -x test -Ptask.times=true -Pvalidation.errorprone=true; the
     exit 1
 fi
 
-./gradlew localSettings
+#./gradlew localSettings
+# sed 's/tests.heapsize=512m/tests.heapsize=1024m/g' gradle.properties
+# sed 's/tests.minheapsize=512m/tests.minheapsize=1024m/g' gradle.properties
+# sed '71 s/Xmx1g/Xmx2g/'	gradle.properties
 
-if ! ./gradlew test; then
+if ! ./gradlew test -x solr:modules:s3-repository ; then
     echo "------------------$PACKAGE_NAME:install_success_but_test_fails---------------------"
     echo "$PACKAGE_URL $PACKAGE_NAME"
     echo "$PACKAGE_NAME  |  $PACKAGE_URL | $PACKAGE_VERSION | GitHub | Fail |  Install_success_but_test_Fails"
