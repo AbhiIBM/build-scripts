@@ -2,13 +2,13 @@
 # -----------------------------------------------------------------------------
 #
 # Package          : solr
-# Version          : releases/solr/9.2.0
+# Version          : releases/solr/9.3.0
 # Source repo      : https://github.com/apache/solr
 # Tested on        : UBI 8.7
 # Language         : Java
 # Travis-Check     : True 
 # Script License   : Apache License, Version 2 or later
-# Maintainer       : Shubham Garud <Shubham.Garud@ibm.com>
+# Maintainer       : Abhishek Dwivedi <Abhishek.Dwivedi6@ibm.com>
 #
 # Disclaimer       : This script has been tested in root mode on given
 # ==========         platform using the mentioned version of the package.
@@ -19,12 +19,12 @@
 # ----------------------------------------------------------------------------
 
 PACKAGE_NAME=solr
-PACKAGE_VERSION=${1:-releases/solr/9.2.0}
+PACKAGE_VERSION=${1:-releases/solr/9.3.0}
 PACKAGE_URL=https://github.com/apache/solr
 HOME_DIR=${PWD}
 
 # Install dependencies
-yum install -y wget git java-11-openjdk java-11-openjdk-devel
+yum install -y wget git java-11-openjdk java-11-openjdk-devel python39-devel.ppc64le
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 export PATH=$HOME_DIR/bin/:$PATH
@@ -37,12 +37,14 @@ git checkout $PACKAGE_VERSION
 
 chmod +x gradlew
 
-if ! ./gradlew localSettings; then
+if ! ./gradlew check -x test -Ptask.times=true -Pvalidation.errorprone=true; then
     echo "------------------$PACKAGE_NAME:install_fails-------------------------------------"
     echo "$PACKAGE_URL $PACKAGE_NAME"
     echo "$PACKAGE_NAME  |  $PACKAGE_URL | $PACKAGE_VERSION | GitHub | Fail |  Install_Fails"
     exit 1
 fi
+
+./gradlew localSettings
 
 if ! ./gradlew test; then
     echo "------------------$PACKAGE_NAME:install_success_but_test_fails---------------------"

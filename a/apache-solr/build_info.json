@@ -1,9 +1,9 @@
 {
-    "maintainer":"Shubham.Garud@ibm.com",
+    "maintainer":"Abhishek.Dwivedi6@ibm.com",
     "package_name":"apache-solr",
     "github_url":"https://github.com/apache/solr",
     "package_dir":"a/apache-solr/", 
-    "version":"releases/solr/9.2.0",
+    "version":"releases/solr/9.3.0",
     "default_branch":"main",
     "build_script":"solr_ubi_8.7.sh",
     "validate_build_script": true,
