@@ -53,8 +53,9 @@ fi
 # sed 's/tests.heapsize=512m/tests.heapsize=1024m/g' gradle.properties
 # sed 's/tests.minheapsize=512m/tests.minheapsize=1024m/g' gradle.properties
 # sed '71 s/Xmx1g/Xmx2g/'	gradle.properties
+#./gradlew test -x solr:modules:s3-repository
 
-if ! ./gradlew test -x solr:modules:s3-repository ; then
+if ! ./gradlew test -Dtests.heap.size=4096m ; then
     echo "------------------$PACKAGE_NAME:install_success_but_test_fails---------------------"
     echo "$PACKAGE_URL $PACKAGE_NAME"
     echo "$PACKAGE_NAME  |  $PACKAGE_URL | $PACKAGE_VERSION | GitHub | Fail |  Install_success_but_test_Fails"
