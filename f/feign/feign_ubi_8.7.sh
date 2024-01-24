@@ -53,6 +53,7 @@ if ! ./mvnw -ntp dependency:resolve-plugins go-offline:resolve-dependencies -Dsk
     exit 1
 fi
 
+mkdir ~/.m2
 cd $HOME_DIR
 mv toolchains.xml ~/.m2/
 cd $PACKAGE_NAME
