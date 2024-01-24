@@ -21,6 +21,8 @@ PACKAGE_NAME=feign
 PACKAGE_VERSION=${1:-13.1}
 PACKAGE_URL=https://github.com/OpenFeign/feign
 
+HOME_DIR=`pwd`
+
 yum install -y git wget gcc-c++ gcc java-11-openjdk java-11-openjdk-devel java-11-openjdk-headless java-1.8.0-openjdk java-1.8.0-openjdk-devel java-1.8.0-openjdk-headless java-17-openjdk java-17-openjdk-devel java-17-openjdk-headless  java-21-openjdk java-21-openjdk-devel java-21-openjdk-headless
 
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
@@ -51,7 +53,9 @@ if ! ./mvnw -ntp dependency:resolve-plugins go-offline:resolve-dependencies -Dsk
     exit 1
 fi
 
-mv `pwd`/toolchains.xml ~/.m2/
+cd $HOME_DIR
+mv toolchains.xml ~/.m2/
+cd $PACKAGE_NAME
 
 if ! ./mvnw -ntp -B verify ; then
     echo "------------------$PACKAGE_NAME:install_success_but_test_fails---------------------"
