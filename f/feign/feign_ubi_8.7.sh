@@ -53,9 +53,9 @@ if ! ./mvnw -ntp dependency:resolve-plugins go-offline:resolve-dependencies -Dsk
     exit 1
 fi
 
-mkdir ~/.m2
+
 cd $HOME_DIR
-mv toolchains.xml ~/.m2/
+cp toolchains.xml ~/.m2/toolchains.xml
 cd $PACKAGE_NAME
 
 if ! ./mvnw -ntp -B verify ; then
