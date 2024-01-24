@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF8"?>
+<toolchains>
+  <!-- JDK toolchains -->
+  <toolchain>
+    <type>jdk</type>
+    <provides>
+      <version>1.8</version>
+      <vendor>openjdk</vendor>
+    </provides>
+    <configuration>
+      <jdkHome>/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.402.b06-2.el8.ppc64le/jre</jdkHome>
+    </configuration>
+  </toolchain>
+  <toolchain>
+    <type>jdk</type>
+    <provides>
+      <version>11</version>
+      <vendor>openjdk</vendor>
+    </provides>
+    <configuration>
+      <jdkHome>/usr/lib/jvm/java-11-openjdk-11.0.22.0.7-2.el8.ppc64le</jdkHome>
+    </configuration>
+  </toolchain>
+  <toolchain>
+    <type>jdk</type>
+    <provides>
+      <version>17</version>
+      <vendor>openjdk</vendor>
+    </provides>
+    <configuration>
+      <jdkHome>/usr/lib/jvm/java-17-openjdk-17.0.10.0.7-2.el8.ppc64le</jdkHome>
+    </configuration>
+  </toolchain>
+  <toolchain>
+    <type>jdk</type>
+    <provides>
+      <version>21</version>
+      <vendor>openjdk</vendor>
+    </provides>
+    <configuration>
+      <jdkHome>/usr/lib/jvm/java-21-openjdk-21.0.2.0.13-1.el8.ppc64le</jdkHome>
+    </configuration>
+  </toolchain>
+</toolchains>
