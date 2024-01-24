@@ -17,7 +17,7 @@
 #             contact "Maintainer" of this script.
 #
 # ----------------------------------------------------------------------------
-PACKAGE_NAME=jsdom
+PACKAGE_NAME=feign
 PACKAGE_VERSION=${1:-13.1}
 PACKAGE_URL=https://github.com/OpenFeign/feign
 
