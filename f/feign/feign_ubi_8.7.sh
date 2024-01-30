@@ -54,9 +54,9 @@ if ! ./mvnw -ntp dependency:resolve-plugins go-offline:resolve-dependencies -Dsk
 fi
 
 
-cd $HOME_DIR
-cp toolchains.xml ~/.m2/toolchains.xml
-cd $PACKAGE_NAME
+#copying toolchains.xml file to .m2 folder to exceute tests
+mkdir ~/.m2
+cp /build-scripts/f/feign/toolchains.xml ~/.m2/
 
 if ! ./mvnw -ntp -B verify ; then
     echo "------------------$PACKAGE_NAME:install_success_but_test_fails---------------------"
