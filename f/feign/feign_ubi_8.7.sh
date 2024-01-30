@@ -42,6 +42,10 @@ tar -zxf apache-maven-3.8.7-bin.tar.gz
 cp -R apache-maven-3.8.7 /usr/local
 ln -s /usr/local/apache-maven-3.8.7/bin/mvn /usr/bin/mvn
 
+#copying toolchains.xml file to .m2 folder to exceute tests
+mkdir ~/.m2
+cp /build-scripts/f/feign/toolchains.xml ~/.m2/
+
 git clone $PACKAGE_URL $PACKAGE_NAME
 cd  $PACKAGE_NAME
 git checkout $PACKAGE_VERSION 
@@ -52,11 +56,6 @@ if ! ./mvnw -ntp dependency:resolve-plugins go-offline:resolve-dependencies -Dsk
     echo "$PACKAGE_NAME  |  $PACKAGE_URL | $PACKAGE_VERSION | GitHub | Fail |  Install_Fails"
     exit 1
 fi
-
-
-#copying toolchains.xml file to .m2 folder to exceute tests
-mkdir ~/.m2
-cp /build-scripts/f/feign/toolchains.xml ~/.m2/
 
 if ! ./mvnw -ntp -B verify ; then
     echo "------------------$PACKAGE_NAME:install_success_but_test_fails---------------------"
