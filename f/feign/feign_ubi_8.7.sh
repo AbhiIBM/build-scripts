@@ -51,6 +51,8 @@ sudo mkdir ~/.m2
 cd ~/.m2
 cp /home/jenkins/build-scripts/f/feign/toolchains.xml .
 
+cd $HOME_DIR
+
 git clone $PACKAGE_URL $PACKAGE_NAME
 cd  $PACKAGE_NAME
 git checkout $PACKAGE_VERSION 
@@ -61,6 +63,11 @@ if ! ./mvnw -ntp dependency:resolve-plugins go-offline:resolve-dependencies -Dsk
     echo "$PACKAGE_NAME  |  $PACKAGE_URL | $PACKAGE_VERSION | GitHub | Fail |  Install_Fails"
     exit 1
 fi
+
+cd ~/.m2
+cp /home/jenkins/build-scripts/f/feign/toolchains.xml .
+
+cd $HOME_DIR/$PACKAGE_NAME
 
 if ! ./mvnw -ntp -B verify ; then
     echo "------------------$PACKAGE_NAME:install_success_but_test_fails---------------------"
