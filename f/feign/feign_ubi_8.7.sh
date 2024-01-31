@@ -46,7 +46,10 @@ ln -s /usr/local/apache-maven-3.8.7/bin/mvn /usr/bin/mvn
 echo "-------------"
 pwd
 sudo mkdir ~/.m2
-cp /home/jenkins/build-scripts/f/feign/toolchains.xml ~/.m2/
+#cp /home/jenkins/build-scripts/f/feign/toolchains.xml ~/.m2/
+#cp toolchains.xml ~/.m2/
+cd ~/.m2
+cp /home/jenkins/build-scripts/f/feign/toolchains.xml .
 
 git clone $PACKAGE_URL $PACKAGE_NAME
 cd  $PACKAGE_NAME
