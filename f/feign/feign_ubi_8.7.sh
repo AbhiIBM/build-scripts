@@ -23,7 +23,7 @@ PACKAGE_URL=https://github.com/OpenFeign/feign
 
 HOME_DIR=`pwd`
 
-yum install -y git wget gcc-c++ gcc java-11-openjdk java-11-openjdk-devel java-11-openjdk-headless java-1.8.0-openjdk java-1.8.0-openjdk-devel java-1.8.0-openjdk-headless java-17-openjdk java-17-openjdk-devel java-17-openjdk-headless  java-21-openjdk java-21-openjdk-devel java-21-openjdk-headless
+yum install -y sudo git wget gcc-c++ gcc java-11-openjdk java-11-openjdk-devel java-11-openjdk-headless java-1.8.0-openjdk java-1.8.0-openjdk-devel java-1.8.0-openjdk-headless java-17-openjdk java-17-openjdk-devel java-17-openjdk-headless  java-21-openjdk java-21-openjdk-devel java-21-openjdk-headless
 
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
 export PATH=$PATH:$JAVA_HOME
@@ -43,7 +43,9 @@ cp -R apache-maven-3.8.7 /usr/local
 ln -s /usr/local/apache-maven-3.8.7/bin/mvn /usr/bin/mvn
 
 #copying toolchains.xml file to .m2 folder to exceute tests
-mkdir ~/.m2
+echo "-------------"
+pwd
+sudo mkdir ~/.m2
 cp /build-scripts/f/feign/toolchains.xml ~/.m2/
 
 git clone $PACKAGE_URL $PACKAGE_NAME
